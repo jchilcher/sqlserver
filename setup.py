@@ -11,7 +11,7 @@ setuptools.setup(
     description="Installable Python Class utilizing pyodbc to run common queries as functions.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/jchilcher/SQLServer",
+    url="https://github.com/jchilcher/sqlserver",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
