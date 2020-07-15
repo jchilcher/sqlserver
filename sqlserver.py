@@ -102,10 +102,13 @@ class SqlServer:
         return res.rowcount
 
     def upsert(self, table, key, keyvalue, **kwargs):
-        """Perform an insert using kwargs as the column/data.
+        """performs an upsert
+           checks if a key exists and either updates or inserts data
 
-        Arguments:
-            table {string} -- Name of the table
+        Args:
+            table (string): table name
+            key (string): name of primary key
+            keyvalue: value of key to compare existing primary key
 
         Returns:
             int -- rows affected
