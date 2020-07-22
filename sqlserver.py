@@ -138,7 +138,8 @@ class SqlServer:
                 k += ', [{}]'.format(key)
                 v += ", ?"
                 update_string += ', [{}] = ?'.format(key)
-        return self.cx.execute(
+        #print(sql_string.format(table, keyname, keyvalue, update_string, k, v))
+        return self.update(
             sql_string.format(table, keyname, keyvalue, update_string, k, v),
             tuple(v_list + v_list)
         )
