@@ -115,10 +115,10 @@ class SqlServer:
         """
         # (table, key, keyvalue, update_string, insert_keys, insert_values)
         sql_string = (
-            "IF EXISTS (SELECT * FROM dbo.[{0}] WHERE {1} = {2}) "
+            "IF EXISTS (SELECT * FROM dbo.[{0}] WHERE [{1}] = {2}) "
             "UPDATE dbo.[{0}] "
             "SET {3} "
-            "WHERE {1} = {2}; "
+            "WHERE [{1}] = {2}; "
             "ELSE "
             "INSERT dbo.[{0}] ( {4} ) "
             "VALUES ( {5} );"
@@ -133,12 +133,11 @@ class SqlServer:
             if key == '' or v == '':
                 k = '[{}]'.format(key)
                 v = "?"
-                update_string += '{} = ?'.format(key)
+                update_string += '[{}] = ?'.format(key)
             else:
                 k += ', [{}]'.format(key)
                 v += ", ?"
                 update_string += ', [{}] = ?'.format(key)
-
         return self.cx.execute(
             sql_string.format(table, key, keyvalue, update_string, k, v),
             tuple(v_list + v_list)
