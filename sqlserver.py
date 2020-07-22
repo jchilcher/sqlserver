@@ -101,7 +101,7 @@ class SqlServer:
         res.commit()
         return res.rowcount
 
-    def upsert(self, table, key, keyvalue, **kwargs):
+    def upsert(self, table, keyname, keyvalue, **kwargs):
         """performs an upsert
            checks if a key exists and either updates or inserts data
 
@@ -139,6 +139,6 @@ class SqlServer:
                 v += ", ?"
                 update_string += ', [{}] = ?'.format(key)
         return self.cx.execute(
-            sql_string.format(table, key, keyvalue, update_string, k, v),
+            sql_string.format(table, keyname, keyvalue, update_string, k, v),
             tuple(v_list + v_list)
         )
