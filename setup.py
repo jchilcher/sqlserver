@@ -15,7 +15,7 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     install_requires=[
         'pyodbc'
-    ]
+    ],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: GNU GPLv3",
