@@ -15,6 +15,12 @@ class SqlServer:
         if keepalive:
             self.cx = self.connect()
 
+    def __enter__(self):
+        return self.cx
+    
+    def __exit__(self):
+        self.cx.close()
+
     def connect(self):
         """Connects to the database
 
@@ -108,7 +114,8 @@ class SqlServer:
         Args:
             table (string): table name
             key (string): name of primary key
-            keyvalue: value of key to compare existing primary key
+            keyvalue (string): value of key to compare existing primary key
+            kwargs (dict): key value pairs to be updated
 
         Returns:
             int -- rows affected

@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="sqlserver",
-    version="0.0.5",
+    version="0.0.6",
     author="Johnathen Chilcher",
     author_email="jchilcher@cursedwave.com",
     description="Installable Python Class utilizing pyodbc to run common queries as functions.",
