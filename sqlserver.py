@@ -16,7 +16,7 @@ class SqlServer:
             self.cx = self.connect()
 
     def __enter__(self):
-        return self.cx
+        return self
     
     def __exit__(self):
         self.cx.close()
